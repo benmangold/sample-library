@@ -1,5 +1,3 @@
-# from SampleGenerator import SineGenerator, SampleGenerator
-
 import traceback, json, os
 
 from SineGenerator import SineGenerator
