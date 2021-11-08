@@ -4,8 +4,9 @@ import os
 
 
 class SampleCollection:
-    def __init__(self, waveGenerator, notes, path):
+    def __init__(self, waveGenerator, waveGeneratorParams, notes, path):
         self.generator = waveGenerator
+        self.generatorParams = waveGeneratorParams
         self.notes = notes
         self.path = path
         dirname = os.path.dirname(__file__)
@@ -15,7 +16,7 @@ class SampleCollection:
 
     def write(self):
         for note in self.notes:
-            buffer = self.generator(note["hertz"]).generate()
+            buffer = self.generator(note["hertz"]).generate(self.generatorParams)
             filename = f"{self.path}_{note['note_num']}_{note['note_flat']}"
             path = f"{self.directory}/{filename}"
             WaveWriter(path, buffer).write()

@@ -6,11 +6,11 @@ docker-run-it: docker-build
 
 it: docker-run-it
 
-main:
+main: clean
 	python src/main.py
 
 clean:
-	rm -rf lib; mkdir lib; make main
+	rm -rf lib; mkdir lib;
 
 fmt:
 	python -m black .

@@ -9,7 +9,7 @@ class SineGenerator:
         self.notePeriodSeconds = 1 / self.noteFrequency
         self.notePeriodSamples = int(self.notePeriodSeconds / self.samplePeriod)
 
-    def generate(self):
+    def generate(self, params=None):
         N = self.notePeriodSamples
         y = N * [0]  # [0,0,0,.....,0]
         for i in range(N):  # [0,1,2,...,N]:
