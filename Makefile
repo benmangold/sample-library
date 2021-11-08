@@ -10,7 +10,7 @@ main: clean
 	python src/main.py
 
 clean:
-	rm -rf lib; mkdir lib;
+	rm -rf lib; mkdir lib; touch lib/README.md
 
 fmt:
 	python -m black .
