@@ -1,2 +1,3 @@
 lib/**/*
 lib.bak
+**/*/__pycache__
