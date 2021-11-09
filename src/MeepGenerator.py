@@ -16,7 +16,7 @@ class MeepGenerator:
         for i in range(N):  # [0,1,2,...,N]:
             sum = 0
             for harmonic in range(harmonics):
-                n = (harmonic + 1) + (harmonic * 2)  # 0=1, 1=3, 2=5
+                n = (harmonic + 1) + (harmonic * 2)
                 value = 4 / (pi * n) * sin((2 * n) * pi * i / N)
                 sum = sum + value
             y[i] = sum / 2

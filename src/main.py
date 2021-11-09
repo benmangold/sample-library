@@ -16,7 +16,7 @@ try:
     SampleCollection(SineGenerator, {}, notes, "basic_sines").write()
 
     SampleCollection(SquareGeneratorPure, {}, notes, "basic_squares_pure").write()
-    
+
     SampleCollection(SquareGenerator, {"n": 3}, notes, "basic_squares_three").write()
     SampleCollection(SquareGenerator, {"n": 5}, notes, "basic_squares_five").write()
     SampleCollection(SquareGenerator, {"n": 10}, notes, "basic_squares_ten").write()
