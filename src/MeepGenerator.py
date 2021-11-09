@@ -1,24 +1,24 @@
 from math import sin, pi
+from WaveGenerator import WaveGenerator
+
+
+def generateMeep(N, params):
+    harmonics = params["n"]
+    y = N * [0]  # [0,0,0,.....,0]
+    for i in range(N):  # [0,1,2,...,N]:
+        sum = 0
+        for harmonic in range(harmonics):
+            n = (harmonic + 1) + (harmonic * 2)
+            value = 4 / (pi * n) * sin((2 * n) * pi * i / N)
+            sum = sum + value
+        y[i] = sum / 2
+    return y
 
 
 class MeepGenerator:
-    def __init__(self, noteFrequency, sampleRate=44100):
-        self.sampleRate = sampleRate  # herts
-        self.noteFrequency = noteFrequency  # hertz
-        self.samplePeriod = 1 / self.sampleRate  # seconds
-        self.notePeriodSeconds = 1 / self.noteFrequency
-        self.notePeriodSamples = int(self.notePeriodSeconds / self.samplePeriod)
+    def __init__(self, noteFrequency, params, sampleRate=44100):
+        self.params = params
+        self.buffer = WaveGenerator(generateMeep, noteFrequency, params).generate()
 
-    def generate(self, params):
-        N = self.notePeriodSamples
-        harmonics = params["n"]
-        y = N * [0]  # [0,0,0,.....,0]
-        for i in range(N):  # [0,1,2,...,N]:
-            sum = 0
-            for harmonic in range(harmonics):
-                n = (harmonic + 1) + (harmonic * 2)
-                value = 4 / (pi * n) * sin((2 * n) * pi * i / N)
-                sum = sum + value
-            y[i] = sum / 2
-        y = 10 * y  # 10 periods, y length is now 10*N
-        return y
+    def getBuffer(self):
+        return self.buffer

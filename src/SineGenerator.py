@@ -1,19 +1,18 @@
 from math import sin, pi
+from WaveGenerator import WaveGenerator
+
+
+def generateSine(N: int, params={}):
+    y = N * [0]  # [0,0,0,.....,0]
+    for i in range(N):  # [0,1,2,...,N]:
+        y1 = 4 / pi * sin(2 * pi * i / N)
+        y[i] = y1
+    return y
 
 
 class SineGenerator:
-    def __init__(self, noteFrequency, sampleRate=44100):
-        self.sampleRate = sampleRate
-        self.noteFrequency = noteFrequency
-        self.samplePeriod = 1 / self.sampleRate
-        self.notePeriodSeconds = 1 / self.noteFrequency
-        self.notePeriodSamples = int(self.notePeriodSeconds / self.samplePeriod)
+    def __init__(self, noteFrequency, params={}):
+        self.buffer = WaveGenerator(generateSine, noteFrequency, params).generate()
 
-    def generate(self, params=None):
-        N = self.notePeriodSamples
-        y = N * [0]  # [0,0,0,.....,0]
-        for i in range(N):  # [0,1,2,...,N]:
-            y1 = 4 / pi * sin(2 * pi * i / N)
-            y[i] = y1
-        y = 10 * y  # 10 periods, y length is now 10*N
-        return y
+    def getBuffer(self):
+        return self.buffer

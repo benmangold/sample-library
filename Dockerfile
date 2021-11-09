@@ -6,6 +6,6 @@ WORKDIR /home/python/app
 
 USER python
 
-RUN pip install black
+RUN pip install black==21.10b0
 
 ENTRYPOINT [ "/bin/bash" ]

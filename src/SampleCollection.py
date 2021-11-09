@@ -5,18 +5,14 @@ import os
 
 class SampleCollection:
     def __init__(self, waveGenerator, waveGeneratorParams, notes, path):
-        self.generator = waveGenerator
-        self.generatorParams = waveGeneratorParams
-        self.notes = notes
-        self.path = path
         dirname = os.path.dirname(__file__)
-        self.directory = os.path.join(dirname, f"../lib/{self.path}")
-        if not os.path.exists(self.directory):
-            os.makedirs(self.directory)
+        directory = os.path.join(dirname, f"../lib/{path}")
+        if not os.path.exists(directory):
+            os.makedirs(directory)
 
-    def write(self):
-        for note in self.notes:
-            buffer = self.generator(note["hertz"]).generate(self.generatorParams)
-            filename = f"{self.path}_{note['note_num']}_{note['note_flat']}"
-            path = f"{self.directory}/{filename}"
-            WaveWriter(path, buffer).write()
+        for note in notes:
+            buffer = waveGenerator(note["hertz"], waveGeneratorParams).getBuffer()
+            buffer = 10 * buffer  # lengthen sample to 10 cycles
+            filename = f"{path}_{note['note_num']}_{note['note_flat']}"
+            filePath = f"{directory}/{filename}"
+            WaveWriter(filePath, buffer)

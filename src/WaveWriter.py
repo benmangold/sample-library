@@ -1,6 +1,6 @@
 import wave, struct
 
-
+# writes a wav file at a configured path when instantiated
 class WaveWriter:
     def __init__(self, path, sample=None, channels=1, sampleRate=44100, bitDepth=16):
         self.path = path
@@ -15,7 +15,6 @@ class WaveWriter:
         else:
             self.sample = sample
 
-    def write(self):
         out = wave.open(f"{self.path}.wav", "w")
         out.setnchannels(self.channels)  # Mono
         out.setsampwidth(int(self.bitDepth / 8))  # Sample is 2 Bytes
