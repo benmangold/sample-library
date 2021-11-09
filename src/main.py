@@ -17,14 +17,14 @@ try:
 
     SampleCollection(PureSquareGenerator, {}, notes, "simple_squares")
 
-    SampleCollection(SquareGenerator, {"n": 2}, notes, "fourier_squares_two")
-    SampleCollection(SquareGenerator, {"n": 3}, notes, "fourier_squares_three")
-    SampleCollection(SquareGenerator, {"n": 5}, notes, "fourier_squares_five")
+    SampleCollection(SquareGenerator, {"n": 2}, notes, "fourier_squares_II")
+    SampleCollection(SquareGenerator, {"n": 3}, notes, "fourier_squares_III")
+    SampleCollection(SquareGenerator, {"n": 5}, notes, "fourier_squares_V")
 
-    SampleCollection(MerpGenerator, {"n": 3}, notes, "merp_three")
-    SampleCollection(MerpGenerator, {"n": 5}, notes, "merp_five")
+    SampleCollection(MerpGenerator, {"n": 3}, notes, "merp_III")
+    SampleCollection(MerpGenerator, {"n": 5}, notes, "merp_V")
 
-    SampleCollection(MeepGenerator, {"n": 3}, notes, "meep_three")
-    SampleCollection(MeepGenerator, {"n": 5}, notes, "meep_five")
+    SampleCollection(MeepGenerator, {"n": 3}, notes, "meep_III")
+    SampleCollection(MeepGenerator, {"n": 5}, notes, "meep_V")
 except:
     traceback.print_exc()
