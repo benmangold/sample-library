@@ -15,7 +15,7 @@ def generateMerp(N, params):
     return y
 
 
-class MerpGenerator:
+class MerpBuffer:
     def __init__(self, noteFrequency, params, sampleRate=44100):
         self.params = params
         self.buffer = WaveGenerator(generateMerp, noteFrequency, params).generate()

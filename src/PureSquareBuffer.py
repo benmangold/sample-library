@@ -13,7 +13,7 @@ def generatePureSquare(N, params={}):
     return y
 
 
-class PureSquareGenerator:
+class PureSquareBuffer:
     def __init__(self, noteFrequency, params, sampleRate=44100):
         self.buffer = WaveGenerator(
             generatePureSquare, noteFrequency, params

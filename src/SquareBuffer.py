@@ -15,7 +15,7 @@ def generateSquare(N, params):
     return y
 
 
-class SquareGenerator:
+class SquareBuffer:
     def __init__(self, noteFrequency, params={}, sampleRate=44100):
         self.buffer = WaveGenerator(generateSquare, noteFrequency, params).generate()
 

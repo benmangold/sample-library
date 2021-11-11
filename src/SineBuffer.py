@@ -10,7 +10,7 @@ def generateSine(N: int, params={}):
     return y
 
 
-class SineGenerator:
+class SineBuffer:
     def __init__(self, noteFrequency, params={}):
         self.buffer = WaveGenerator(generateSine, noteFrequency, params).generate()
 

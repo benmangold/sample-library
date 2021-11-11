@@ -15,7 +15,7 @@ def generateMeep(N, params):
     return y
 
 
-class MeepGenerator:
+class MeepBuffer:
     def __init__(self, noteFrequency, params, sampleRate=44100):
         self.params = params
         self.buffer = WaveGenerator(generateMeep, noteFrequency, params).generate()
